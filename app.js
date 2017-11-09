@@ -5,7 +5,7 @@ const firebase = require('firebase')
 const uniqueString = require('unique-string')
 const createMessage = require('./message')
 
-// require('dotenv').config()
+require('dotenv').config()
 
 // replace the value below with the Telegram token you receive from @BotFather
 const token = process.env.BOT_TOKEN
@@ -29,9 +29,9 @@ app.use(bodyParser.urlencoded({
 
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, `
-    - command _/add {name}_ -- add new repository
-    - command _/search {repository id}_ -- search repository info
-  `, { parse_mode: 'Markdown' })
+    <p>command _/add {name}_ -- add new repository</p>
+    <p>command _/search {repository id}_ -- search repository info</p>
+  `, { parse_mode: 'HTML' })
 })
 
 bot.onText(/\/add/, msg => {
@@ -46,9 +46,9 @@ bot.onText(/\/add/, msg => {
     username: msg.chat.username
   }).then(() => {
     bot.sendMessage(userId, `congrats!!!
-      - repository name is ${repoName}
-      - unique repository id is ${repoId} (important)
-      - webhook url is ${webhookUrl}`, { parse_mode: 'Markdown' })
+      <p>repository name is ${repoName}</p>
+      <p>unique repository id is ${repoId} (important)</p>
+      <p>webhook url is ${webhookUrl}</p>`, { parse_mode: 'HTML' })
   }).catch(error => {
     bot.sendMessage(userId, error.message)
   })
@@ -66,9 +66,9 @@ bot.onText(/\/search/, msg => {
         repoName
       } = snapshot
       bot.sendMessage(userId, `congrats!!!
-      - repoName url is ${repoName}
-      - username is ${username}
-      - webhook url is ${webhookUrl}`, { parse_mode: 'Markdown' })
+      <p>repoName url is ${repoName}</p>
+      <p>username is ${username}</p>
+      <p>webhook url is ${webhookUrl}</p>`, { parse_mode: 'HTML' })
     }).catch(error => {
       bot.sendMessage(userId, error.message)
     })
@@ -94,7 +94,6 @@ app.post('/webhook/:id', (req, res) => {
 
 app.post('/webhook1', (req, res) => {
   console.log(req.body)
-  // console.log(createMessage(req.body))
   res.send('succeed')
 })
 
