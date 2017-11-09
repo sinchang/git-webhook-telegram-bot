@@ -7,7 +7,7 @@ const token = '412096935:AAGEPdzS-oQh6dCpaJ3qw_cyrYiu2OGujvw'
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true})
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8080
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
