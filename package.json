@@ -18,6 +18,7 @@
     "unique-string": "^1.0.0"
   },
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "nodemon": "^1.12.1"
   }
 }
