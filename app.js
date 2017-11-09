@@ -27,9 +27,9 @@ app.use(bodyParser.urlencoded({
 
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, `
-    <b>command _/add {name}_ -- add new repository</b>
-    <b>command _/search {repository id}_ -- search repository info</b>
-  `, { parse_mode: 'HTML' })
+    - command _/add {name}_ -- add new repository
+    - command _/search {repository id}_ -- search repository info
+  `)
 })
 
 bot.onText(/\/add/, msg => {
@@ -44,9 +44,9 @@ bot.onText(/\/add/, msg => {
     username: msg.chat.username
   }).then(() => {
     bot.sendMessage(userId, `congrats!!!
-      <b>repository name is ${repoName}</b>
-      <b>unique repository id is ${repoId} (important)</b>
-      <b>webhook url is ${webhookUrl}</b>`, { parse_mode: 'HTML' })
+      - repository name is ${repoName}
+      - unique repository id is ${repoId} (important)
+      - webhook url is ${webhookUrl}`)
   }).catch(error => {
     bot.sendMessage(userId, error.message)
   })
@@ -60,13 +60,12 @@ bot.onText(/\/search/, msg => {
       const {
         webhookUrl,
         username,
-        userId,
         repoName
-      } = snapshot
+      } = snapshot.val()
       bot.sendMessage(userId, `congrats!!!
-      <b>repoName url is ${repoName}</b>
-      <b>username is ${username}</b>
-      <b>webhook url is ${webhookUrl}</b>`, { parse_mode: 'HTML' })
+      - repoName url is ${repoName}
+      - username is ${username}
+      - webhook url is ${webhookUrl}`)
     }).catch(error => {
       bot.sendMessage(userId, error.message)
     })
