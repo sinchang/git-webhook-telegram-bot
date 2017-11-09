@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const TelegramBot = require('node-telegram-bot-api')
 const firebase = require('firebase')
 const uniqueString = require('unique-string')
+const createMessage = require('./message')
 
 require('dotenv').config()
 
@@ -93,7 +94,8 @@ app.post('/webhook/:id', (req, res) => {
 })
 
 app.post('/webhook1', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
+  console.log(createMessage(req.body, 'push'))
   res.send('succeed')
 })
 

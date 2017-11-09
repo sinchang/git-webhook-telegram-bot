@@ -1,5 +1,5 @@
 {
-  "name": "gitlab-telegram-bot",
+  "name": "git-webhook-telegram-bot",
   "version": "0.0.1",
   "main": "app.js",
   "scripts": {
