@@ -5,7 +5,7 @@ const firebase = require('firebase')
 const uniqueString = require('unique-string')
 const createMessage = require('./message')
 
-require('dotenv').config()
+// require('dotenv').config()
 
 // replace the value below with the Telegram token you receive from @BotFather
 const token = process.env.BOT_TOKEN
