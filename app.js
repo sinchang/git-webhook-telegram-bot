@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 bot.onText(/\/add/, (msg) => {
   const userId = msg.chat.id
-  const repoName = msg.message.text.substring(5)
+  const repoName = msg.text.substring(5)
   const repoId = uniqueString()
   const webhookUrl = `${url}/webhook/${repoId}`
   firebase.database().ref(`repos/${repoId}`).set({
