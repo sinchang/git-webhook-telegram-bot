@@ -31,7 +31,7 @@ bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, `
     - command _/add {name}_ -- add new repository
     - command _/search {repository id}_ -- search repository info
-  `, { parse_mode: 'markdown' })
+  `, { parse_mode: 'Markdown' })
 })
 
 bot.onText(/\/add/, msg => {
@@ -48,7 +48,7 @@ bot.onText(/\/add/, msg => {
     bot.sendMessage(userId, `congrats!!!
       - repository name is ${repoName}
       - unique repository id is ${repoId} (important)
-      - webhook url is ${webhookUrl}`)
+      - webhook url is ${webhookUrl}`, { parse_mode: 'Markdown' })
   }).catch(error => {
     bot.sendMessage(userId, error.message)
   })
@@ -68,7 +68,7 @@ bot.onText(/\/search/, msg => {
       bot.sendMessage(userId, `congrats!!!
       - repoName url is ${repoName}
       - username is ${username}
-      - webhook url is ${webhookUrl}`, { parse_mode: 'markdown' })
+      - webhook url is ${webhookUrl}`, { parse_mode: 'Markdown' })
     }).catch(error => {
       bot.sendMessage(userId, error.message)
     })
@@ -87,14 +87,14 @@ app.post('/webhook/:id', (req, res) => {
       const {
         userId
       } = snapshot.val()
-      bot.sendMessage(userId, message, { parse_mode: 'markdown' })
+      bot.sendMessage(userId, message, { parse_mode: 'Markdown' })
       res.send('succeed')
     })
 })
 
 app.post('/webhook1', (req, res) => {
-  // console.log(req.body)
-  console.log(createMessage(req.body))
+  console.log(req.body)
+  // console.log(createMessage(req.body))
   res.send('succeed')
 })
 
