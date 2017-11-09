@@ -13,7 +13,7 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 firebase.initializeApp({
-  apiKey: 'AIzaSyA0F3mHAqEMsDDKX4-rodIZ_sO3bdsp8lk',
+  apiKey: 'AIzaSyDmqhQ6Kcq6KdE7R4B9gZebPsiwUbGNIgs',
   databaseURL: 'https://gitlab-telegram-bot.firebaseio.com'
 })
 
