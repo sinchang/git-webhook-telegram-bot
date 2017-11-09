@@ -13,7 +13,9 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "node-telegram-bot-api": "^0.29.0"
+    "firebase": "^4.6.1",
+    "node-telegram-bot-api": "^0.29.0",
+    "unique-string": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
