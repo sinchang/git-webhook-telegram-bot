@@ -5,8 +5,6 @@ const firebase = require('firebase')
 const uniqueString = require('unique-string')
 const createMessage = require('./message')
 
-require('dotenv').config()
-
 // replace the value below with the Telegram token you receive from @BotFather
 const token = process.env.BOT_TOKEN
 const url = process.env.WEBHOOK_URL
@@ -90,11 +88,6 @@ app.post('/webhook/:id', (req, res) => {
       bot.sendMessage(userId, message, { parse_mode: 'Markdown' })
       res.send('succeed')
     })
-})
-
-app.post('/webhook1', (req, res) => {
-  console.log(req.body)
-  res.send('succeed')
 })
 
 app.listen(PORT, () => {
