@@ -31,7 +31,7 @@ bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, `
     - command _/add {name}_ -- add new repository
     - command _/search {repository id}_ -- search repository info
-  `)
+  `, { parse_mode: 'markdown' })
 })
 
 bot.onText(/\/add/, msg => {
@@ -50,7 +50,7 @@ bot.onText(/\/add/, msg => {
       - unique repository id is ${repoId} (important)
       - webhook url is ${webhookUrl}`)
   }).catch(error => {
-    bot.sendMessage(error.message)
+    bot.sendMessage(userId, error.message)
   })
 })
 
@@ -68,9 +68,9 @@ bot.onText(/\/search/, msg => {
       bot.sendMessage(userId, `congrats!!!
       - repoName url is ${repoName}
       - username is ${username}
-      - webhook url is ${webhookUrl}`)
+      - webhook url is ${webhookUrl}`, { parse_mode: 'markdown' })
     }).catch(error => {
-      bot.sendMessage(error.message)
+      bot.sendMessage(userId, error.message)
     })
 })
 
@@ -87,7 +87,7 @@ app.post('/webhook/:id', (req, res) => {
       const {
         userId
       } = snapshot.val()
-      bot.sendMessage(userId, message)
+      bot.sendMessage(userId, message, { parse_mode: 'markdown' })
       res.send('succeed')
     })
 })
