@@ -16,13 +16,13 @@ module.exports = body => {
   } else if (body.object_kind === 'issue') {
     const attr = body.object_attributes
     return `
-      [${body.project.path_with_namespace}]: [Issue #${attr.id}](attr.url) ${attr.title} ${attr.state} by ${body.user.username}
+      [${body.project.path_with_namespace}]: Issue [#${attr.id}] "${attr.title}"](${attr.url}) ${attr.state} by ${body.user.username}
     `
   } else if (body.object_kind === 'note') {
     const issue = body.issue
     const attr = body.object_attributes
     return `
-      [${body.project.path_with_namespace}]: [Issue #${issue.id}](attr.url) ${issue.title} created comment by ${body.user.username}
+      [${body.project.path_with_namespace}]: Issue [#${issue.id} "${issue.title}"](${attr.url}) created comment by ${body.user.username}
       ${attr.note}
     `
   } else {
