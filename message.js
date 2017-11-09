@@ -1,5 +1,5 @@
-module.exports = (body, type) => {
-  if (type === 'push') {
+module.exports = body => {
+  if (body.object_kind === 'push') {
     const l = body.commits.length
     const prefix = l === 1 ? 'commit' : 'commits'
     let commitMessages = ''

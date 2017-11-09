@@ -81,13 +81,12 @@ app.get('/', (req, res) => {
 app.post('/webhook/:id', (req, res) => {
   const body = req.body
   const repoId = req.params.id
-  const message = `[${body.project.path_with_namespace}]: ${body.event_name} by ${body.user_name}`
+  const message = createMessage(body)
   firebase.database().ref(`repos/${repoId}`).once('value')
     .then(snapshot => {
       const {
         userId
       } = snapshot.val()
-      console.log(userId)
       bot.sendMessage(userId, message)
       res.send('succeed')
     })
@@ -95,7 +94,7 @@ app.post('/webhook/:id', (req, res) => {
 
 app.post('/webhook1', (req, res) => {
   // console.log(req.body)
-  console.log(createMessage(req.body, 'push'))
+  console.log(createMessage(req.body))
   res.send('succeed')
 })
 
