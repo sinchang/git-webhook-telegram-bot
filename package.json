@@ -1,0 +1,19 @@
+{
+  "name": "gitlab-telegram-bot",
+  "version": "0.0.1",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "sinchang <sinchangwen@gmail.com> (http://sinchang.me/)",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
