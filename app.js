@@ -26,10 +26,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 bot.onText(/\/start/, (msg) => {
-  bot.sendMessage(msg.chat.id, `
-    - command _/add {name}_ -- add new repository
-    - command _/search {repository id}_ -- search repository info
-  `)
+  bot.sendMessage(msg.chat.id, `command /add {name} -- add new repository \ncommand /search {repository id} -- search repository info`)
 })
 
 bot.onText(/\/add/, msg => {
@@ -43,10 +40,7 @@ bot.onText(/\/add/, msg => {
     userId: userId,
     username: msg.chat.username
   }).then(() => {
-    bot.sendMessage(userId, `congrats!!!
-      - repository name is ${repoName}
-      - unique repository id is ${repoId} (important)
-      - webhook url is ${webhookUrl}`)
+    bot.sendMessage(userId, `congrats!!! \nrepository name is ${repoName} \nunique repository id is ${repoId} (important) \nwebhook url is ${webhookUrl}`)
   }).catch(error => {
     bot.sendMessage(userId, error.message)
   })
@@ -62,10 +56,7 @@ bot.onText(/\/search/, msg => {
         username,
         repoName
       } = snapshot.val()
-      bot.sendMessage(userId, `congrats!!!
-      - repoName url is ${repoName}
-      - username is ${username}
-      - webhook url is ${webhookUrl}`)
+      bot.sendMessage(userId, `congrats!!! \nrepoName url is ${repoName} \nusername is ${username} \nwebhook url is ${webhookUrl}`)
     }).catch(error => {
       bot.sendMessage(userId, error.message)
     })
